@@ -31,7 +31,7 @@ body {
   text-align: left;
   line-height: 100px;
   align-items: center;
-  text-shadow: rgb(0, 0, 0) 0px 30px 30px;
+  
 }
 
 .logo a {
@@ -49,16 +49,16 @@ body {
 nav {
   float: right;
   line-height: 100px;
-  text-shadow: rgb(0, 0, 0) 0px 15px 15px;
+  
 }
 
 nav a:link {
   text-decoration: solid;
-  font-family: 'impact';
-  letter-spacing: 4px;
-  font-size: 20px;
+  font-family: 'londrina solid';
+  letter-spacing: 1px;
+  font-size: 27px;
   color: #010000;
-  padding: 36px 10px;
+  padding: 36px 20px;
   transform: scale(1.1);
   
 }
@@ -82,9 +82,9 @@ nav a:hover {
   border-style: solid;
   border-color: wheat;
   border-width: 2px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-optical-sizing: auto;
-  font-weight: 700;
+  font-weight: 300;
   font-style: normal;
   position: relative;
   top: 250px;
@@ -93,7 +93,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 160px;
+  padding: 32px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.8);
   width: 500px;
@@ -101,7 +101,14 @@ nav a:hover {
   box-shadow: rgb(0, 0, 0) 0px 10px 25px;
 }
 
-
+.text-center{
+  padding: px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: #000000 0px;
+}
 .button-container {
   border-style: solid;
   border-color: wheat;
@@ -139,12 +146,12 @@ button {
   justify-content: center;
   position: relative;
   border-style: solid;
-  box-shadow: rgb(255, 255, 255) 1px 4px 20px;
+  
 }
 
 button:hover {
   z-index: 0;
-  box-shadow: 40px 0px 50px #62dd31, -40px 0px 50px #15e6f5ad;
+  box-shadow: 5px 0px 50px #62dd31, -5px 0px 50px #15e6f5ad;
   transform: scale(1.1);
   color: #000000;
   background-color: rgba(0, 255, 255, 0.726);
