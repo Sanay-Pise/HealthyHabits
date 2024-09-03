@@ -8,9 +8,9 @@
 }
 
 body {
-    background-image: url(bg.jpg);
+    background-image: url(bg1.jpg);
     background-repeat: no-repeat;
-    background-attachment: flex;
+    background-attachment:inherit;
 }
 
 .header {
@@ -85,7 +85,8 @@ nav a{
     position: relative;
     top: 300px;
     background-color: #f0f0f0;
-    padding: 20px;
+    padding: 60px;
+    background-color: #000000b7;
     border: 1px solid #ddd;
     border-radius: 10px;
     flex-direction: column;

@@ -11,6 +11,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="./style.css">
+
 </head>
 
 <body>
@@ -22,58 +23,19 @@
             </div>
 
             <nav>
-                <a href="home.html" target="_blank">
+                <a href="index.html" target="_blank">
                     <img src="home.png" alt="Home page">
-                  </a>
-                  <a href="bmi.html" target="_blank">
-                    <img src="bmi.png" alt="bmi calculator">
-                  </a>
-                  <a href="recom.html" target="_blank">
-                    <img src="slim.png" alt="recommendation page">
-                  </a>
-                  
+                </a>
             </nav>
+            
         </div>
-        <div class="calculator-container">
+        
+        <div class="button-container">
+            <button onclick="location.href='Calorie.html'">Calorie calculator</button>
 
-
-            <form style="width: 400px;">
-
-                <div class="form-group">
-                    <label for="gender">Gender:</label>
-                    <select id="gender" class="form-control">
-                        <option>-select-</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="age">Age:</label>
-                    <input type="text" class="form-control" id="age">
-                </div>
-
-                <div class="form-group">
-                    <label for="height">Height(cms):</label>
-                    <input type="text" class="form-control" id="height">
-                </div>
-
-                <div class="form-group">
-                    <label for="weight">Weight(kgs):</label>
-                    <input type="text" class="form-control" id="weight">
-                </div>
-
-                <button type="button" class="btn btn-primary form-control"
-                    onclick="calculateCalories()">Calculate</button>
-
-            </form>
-
-            <div id="result"></div>
-        </div>
-
+            <button onclick="location.href='bmi.html'">bmi calculator</button>
+            
+            <button onclick="location.href='recom.html'">reccomendation</button>
+          </div>
+        
     </div>
-
-    <script src="./script.js"></script>
-</body>
-
-</html>
