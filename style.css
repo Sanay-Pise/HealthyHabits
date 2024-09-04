@@ -81,6 +81,8 @@ nav a:hover {
 }
 
 .calculator-container {
+  position: relative;
+  top: 200 px;
   border-style: solid;
   border-color: wheat;
   border-width: 2px;
@@ -88,8 +90,6 @@ nav a:hover {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  position: relative;
-  top: 180 px;
   display: flex;
   color: aliceblue;
   flex-direction: column;
