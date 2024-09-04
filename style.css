@@ -89,7 +89,7 @@ nav a:hover {
   font-weight: 300;
   font-style: normal;
   position: relative;
-  top: 250px;
+  top: 140px;
   display: flex;
   color: aliceblue;
   flex-direction: column;
@@ -121,7 +121,7 @@ nav a:hover {
   height: 450px;
   align-items: center;
   position: relative;
-  top: 300px;
+  top: 220px;
   padding: 40px;
   background-color: #000000c0;
   box-shadow: rgb(0, 0, 0) 20px 20px 50px;
