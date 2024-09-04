@@ -148,9 +148,19 @@ nav a:hover {
 
 }
 
+.calorie-button, .bmi-button, .recom-button {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border: none;
+}
+
+
 button {
   display: flex;
   align-items: center;
+  width: 250px;
+  height: 75px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: larger;
   font-style: normal;
@@ -175,27 +185,3 @@ button:hover {
   background-color: rgba(0, 255, 255, 0.726);
 }
 
-.recom-button {
-  justify-items: center;
-  position: relative;
-
-  padding: 20px;
-}
-
-.calorie-button {
-  align-items: center;
-  border: #000000;
-  position: relative;
-  padding: 20px;
-  justify-content: center;
-}
-
-.bmi-button {
-  position: relative;
-  padding: 20px;
-  align-items: center;
-  border: #000000;
-  justify-content: center;
-  border-color: #62dd31;
-  size: 10cap;
-}
