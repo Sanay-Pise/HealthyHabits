@@ -3,6 +3,12 @@ function calculateCalories() {
     const age = parseInt(document.getElementById("age").value);
     const height = parseInt(document.getElementById("height").value);
     const weight = parseInt(document.getElementById("weight").value);
+    
+    if (!gender || !age || !height || !weight) {
+        const resultElement = document.getElementById("result");
+        resultElement.innerHTML = `<p class="text-center mt-3">Please enter all required information!</p>`;
+        return;
+    }
 
     let bmr;
 
