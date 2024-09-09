@@ -22,7 +22,7 @@ body {
   width: 100%;
   height: 100px;
   position: fixed;
-  background-color: rgba(27, 255, 202, 0.812);
+  background-color: rgb(27, 255, 202);
 }
 
 .logo {
