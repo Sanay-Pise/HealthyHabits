@@ -21,3 +21,41 @@ function calculateCalories() {
     const resultElement = document.getElementById("result");
     resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong>${bmr.toFixed(2)}</strong> calories</p>`;
 }
+
+const wrapper = document.querySelector('.wrapper');
+const loginlink = document.querySelector('.login-link');
+const registerlink = document.querySelector('.register-link');
+
+registerlink.addEventListener('click', ()=> {
+    wrapper.classList.add('active');
+});
+
+loginlink.addEventListener('click', ()=> {
+    wrapper.classList.remove('active');
+});
+
+
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.querySelector('input[type="email"]').value;
+  const password = document.querySelector('input[type="password"]').value;
+  if (email && password) {
+    location.href = 'home.html';
+  } else {
+    alert('Please enter valid email and password');
+  }
+});
+
+const registerForm = document.querySelector('.register form');
+registerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = document.querySelector('.register input[type="text"]').value;
+  const email = document.querySelector('.register input[type="email"]').value;
+  const password = document.querySelector('.register input[type="password"]').value;
+  if (username && email && password) {
+    location.href = 'home.html';
+  } else {
+    alert('Please enter valid username, email, and password');
+  }
+});

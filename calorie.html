@@ -15,8 +15,10 @@
     <!--FONTS-->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nerko+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nerko+One&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -30,18 +32,19 @@
             <nav>
                 <a href="index.html" target="_blank">
                     <img src="home.svg" alt="Home page">
-                  </a>
-                  <a href="bmi.html" target="_blank">
+                </a>
+                <a href="bmi.html" target="_blank">
                     <img src="bmi.png" alt="bmi calculator">
-                  </a>
-                  <a href="recom.html" target="_blank">
+                </a>
+                <a href="recom.html" target="_blank">
                     <img src="slim.png" alt="recommendation page">
-                  </a>
-                  
+                </a>
+
             </nav>
         </div>
         <div class="calculator-container">
-            <h2 class="text-center" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', charcoal">YOUR DAILY CALORIE COUNT</h2>
+            <h2 class="text-center" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', charcoal">YOUR
+                DAILY CALORIE COUNT</h2>
 
             <form style="width: 400px;">
 
@@ -56,21 +59,22 @@
 
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="text" class="form-control" id="age">
+                    <input type="text" class="form-control" id="age" required>
                 </div>
 
                 <div class="form-group">
                     <label for="height">Height(cms):</label>
-                    <input type="text" class="form-control" id="height">
+                    <input type="text" class="form-control" id="height" required>
                 </div>
 
                 <div class="form-group">
                     <label for="weight">Weight(kgs):</label>
-                    <input type="text" class="form-control" id="weight">
+                    <input type="text" class="form-control" id="weight" required>
                 </div>
                 <div class="calculate-button">
-                <button type="button" class="btn btn-primary form-control"
-                    onclick="calculateCalories()">Calculate</button></div>
+                    <button type="button" class="btn btn-primary form-control"
+                        onclick="calculateCalories()">Calculate</button>
+                </div>
 
             </form>
 
