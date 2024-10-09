@@ -266,7 +266,7 @@ nav a:hover {
   overflow: hidden;
   transition: height .2s ease;
   bottom: 550px;
-  left: 750px;
+  left: 600px;
 }
 
 .wrapper.active {
