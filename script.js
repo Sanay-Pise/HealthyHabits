@@ -1,9 +1,37 @@
+// Function to calculate maintenance calories
+function calculateCalories() {
+  const gender = document.getElementById("gender") ? document.getElementById("gender").value : null;
+  const age = parseInt(document.getElementById("age") ? document.getElementById("age").value : null);
+  const height = parseInt(document.getElementById("height") ? document.getElementById("height").value : null);
+  const weight = parseInt(document.getElementById("weight") ? document.getElementById("weight").value : null);
+
+  if (!gender || !age || !height || !weight) {
+      const resultElement = document.getElementById("result");
+      if (resultElement) {
+          resultElement.innerHTML = `<p class="text-center mt-3">Please enter all required information!</p>`;
+      }
+      return;
+  }
+
+  let bmr;
+  if (gender === "male") {
+      bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+  } else {
+      bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+  }
+
+  const resultElement = document.getElementById("result");
+  if (resultElement) {
+      resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong>${bmr.toFixed(2)}</strong> calories</p>`;
+  }
+}
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Script is loaded");
 
   // Function to calculate maintenance calories
-  function calculateCalories() {
+
+ function calculateCalories() {
     const gender = document.getElementById("gender") ? document.getElementById("gender").value : null;
     const age = parseInt(document.getElementById("age") ? document.getElementById("age").value : null);
     const height = parseInt(document.getElementById("height") ? document.getElementById("height").value : null);
@@ -28,7 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (resultElement) {
       resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong>${bmr.toFixed(2)}</strong> calories</p>`;
     }
-  }
+}
+
 
   // Function to calculate BMI
   function calculateBMI() {
