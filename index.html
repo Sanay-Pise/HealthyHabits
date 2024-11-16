@@ -42,19 +42,25 @@
         <h2 class="text-center" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', charcoal">SELECT YOUR
           CHOICE</h2>
         <div class="calorie-button">
-          <button class="calculator-button" onclick="location.href='login.html'">Calorie Calculator</button>
+          <button class="calculator-button" onclick="showSpinnerAndRedirect('login.html')">Calorie Calculator</button>
         </div>
         <div class="bmi-button">
-          <button class="calculator-button" onclick="location.href='login.html'">BMI Calculator</button>
+          <button class="calculator-button" onclick="showSpinnerAndRedirect('login.html')">BMI Calculator</button>
         </div>
         <div class="recom-button">
-          <button class="calculator-button" onclick="location.href='login.html'">Weight Goal Calculator</button>
+          <button class="calculator-button" onclick="showSpinnerAndRedirect('login.html')">Weight Goal Calculator</button>
         </div>
       </div>
 
+      <!-- Spinner Container -->
+      <div id="spinner-container" class="spinner-container" style="display: none;">
+        <div class="spinner"></div>
+      </div>
 
     </div>
   </div>
+
+  <script src="script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

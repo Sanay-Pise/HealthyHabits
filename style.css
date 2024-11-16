@@ -25,6 +25,7 @@ body {
   height: 100px;
   position: fixed;
   background-color: rgb(27, 255, 202);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -76,6 +77,16 @@ nav {
 
 }
 
+nav a {
+  font-family: 'londrina solid';
+  letter-spacing: 1px;
+  font-size: 27px;
+  color: #010000;
+  padding: 30px 20px;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
 nav a:link {
   text-decoration: solid;
   font-family: 'londrina solid';
@@ -120,6 +131,20 @@ nav a:hover {
   display: flex;
   justify-content: center;
   height: 100vh;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(30%); 
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); 
+    opacity: 1;
+  }
+}
+.calculator-container {
+  animation: slideIn 2s ease-in-out;
 }
 
 .calculator-container {
@@ -222,12 +247,23 @@ nav a:hover {
   border-style: solid;
 }
 
-.btn-login:hover {
-  z-index: 0;
-
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
+
+.btn-login:hover {
+  animation: pulseButton 0.5s ease-in-out infinite;
+}
+
+
 
 .calculator-button {
   display: flex;
@@ -258,6 +294,52 @@ nav a:hover {
   color: #000000;
   background-color: rgba(0, 255, 255, 0.726);
   transition: transform 0.3s ease;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #00ffbf;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spinner 1s linear infinite;
+}
+
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.wrapper {
+  animation: fadeIn 1s ease-in-out;
 }
 
 .wrapper {
@@ -333,6 +415,19 @@ nav a:hover {
   color: #162938;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-box input:focus {
+  animation: focusAnimation 0.3s ease-out;
+}
+
+@keyframes focusAnimation {
+  from {
+    border-bottom: 1px solid #705b4a;
+  }
+  to {
+    border-bottom: 1px solid #00ffbf;
+  }
 }
 
 .input-box {
@@ -421,7 +516,27 @@ nav a:hover {
   color: white;
   font-weight: 500;
 }
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
+.btn-submit:hover {
+  animation: bounce 0.5s ease;
+}
 .login-register {
   font-size: .9em;
   color: #162938;
@@ -468,6 +583,20 @@ nav a:hover {
   box-shadow: 0px 0px 166px -31px rgba(0, 0, 0, 0.15);
   border-radius: 60px;
   z-index: -1;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(30%); 
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); 
+    opacity: 1;
+  }
+}
+.box{
+  animation: slideIn 2s ease-in-out;
 }
 h1 {
   font-weight: bold;
@@ -568,6 +697,7 @@ button#calculate:hover {
   background-color: black;
 }
 
+
 .rec-container {
   border-style: solid;
   border-color: rgb(0, 0, 0);
@@ -590,4 +720,18 @@ button#calculate:hover {
   width: 500px;
   height: 695px;
   box-shadow: rgb(0, 0, 0) 0px 10px 25px, rgba(0, 0, 0, 0.5) 0px 0px 15px;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(30%); 
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); 
+    opacity: 1;
+  }
+}
+.rec-container {
+  animation: slideIn 2s ease-in-out;
 }

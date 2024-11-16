@@ -191,3 +191,15 @@ function recCalories() {
     resultElement.innerHTML = `<p class="text-center mt-3">Your recommended daily calorie intake to ${goal === "lose" ? "lose" : "gain"} weight is: <strong><span style="color: #FF9800; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0), 0 0 5px #000000, 0 0 2px black;">${adjustedCalories.toFixed(2)}</span></strong> calories per day.</p>`;
   }
 }
+
+function showSpinnerAndRedirect() {
+  const spinnerContainer = document.getElementById('spinner-container');
+  
+  // Show the spinner container
+  spinnerContainer.style.display = 'flex';
+
+  // Redirect to login page after a brief delay
+  setTimeout(function() {
+    window.location.href = 'login.html';
+  }, 2000);  // Spinner will show for 2 seconds
+}
