@@ -22,7 +22,7 @@ function calculateCalories() {
 
   const resultElement = document.getElementById("result");
   if (resultElement) {
-      resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong>${bmr.toFixed(2)}</strong> calories</p>`;
+      resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong><span style="color: #FF9800; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0), 0 0 5px #000000, 0 0 2px black;">${bmr.toFixed(2)}</span></strong> calories</p>`;
   }
 }
 // Wait for the DOM to be fully loaded
@@ -149,3 +149,45 @@ document.addEventListener("DOMContentLoaded", function () {
   calculateBMI();
   // If you need to calculate calories, call calculateCalories() where appropriate
 });
+
+
+function recCalories() {
+  const gender = document.getElementById("gender") ? document.getElementById("gender").value : null;
+  const age = parseInt(document.getElementById("age") ? document.getElementById("age").value : null);
+  const height = parseInt(document.getElementById("height") ? document.getElementById("height").value : null);
+  const weight = parseInt(document.getElementById("weight") ? document.getElementById("weight").value : null);
+  const goal = document.getElementById("goal") ? document.getElementById("goal").value : null;
+
+  if (!gender || !age || !height || !weight || !goal) {
+    const resultElement = document.getElementById("result");
+    if (resultElement) {
+      resultElement.innerHTML = `<p class="text-center mt-3">Please enter all required information!</p>`;
+    }
+    return;
+  }
+
+  // Calculate BMR
+  let bmr;
+  if (gender === "male") {
+    bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+  } else {
+    bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+  }
+
+  // Adjust BMR based on an assumed moderate activity level (e.g., BMR * 1.55)
+  const activityFactor = 1.55; // Moderate activity level
+  const dailyCalories = bmr * activityFactor;
+
+  // Adjust for weight goal (e.g., -500 calories/day for weight loss, +500 for weight gain)
+  let adjustedCalories;
+  if (goal === "lose") {
+    adjustedCalories = dailyCalories - 500; // Typically, a 500-calorie deficit per day
+  } else if (goal === "gain") {
+    adjustedCalories = dailyCalories + 500; // Typically, a 500-calorie surplus per day
+  }
+
+  const resultElement = document.getElementById("result");
+  if (resultElement) {
+    resultElement.innerHTML = `<p class="text-center mt-3">Your recommended daily calorie intake to ${goal === "lose" ? "lose" : "gain"} weight is: <strong><span style="color: #FF9800; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0), 0 0 5px #000000, 0 0 2px black;">${adjustedCalories.toFixed(2)}</span></strong> calories per day.</p>`;
+  }
+}
