@@ -222,3 +222,13 @@ function showSpinnerAndRedirect() {
     window.location.href = 'login.html';
   }, 2000);  // Spinner will show for 2 seconds
 }
+
+
+const main = document.querySelector('.main');
+
+window.addEventListener('mousemove', (e) => {
+    const { clientX: mouseX, clientY: mouseY } = e;
+    const moveX = (mouseX / window.innerWidth) * 100;
+    const moveY = (mouseY / window.innerHeight) * 100;
+    parallax.style.transform = `translate(-${moveX / 10}%, -${moveY / 10}%)`;
+});

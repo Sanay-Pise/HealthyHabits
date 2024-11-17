@@ -19,6 +19,23 @@ body {
   margin: 0;
 
 }
+@keyframes moveBg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.main {
+  height: 100vh;
+  background-image: url('bg2.jpg');
+  background-size: 100% 150%; /* Stretch the background horizontally */
+  background-repeat: repeat;
+  animation: moveBg 30s linear infinite;
+  background-attachment: fixed; /* Keep the background fixed */
+}
 
 .header {
   width: 100%;
@@ -225,7 +242,20 @@ nav a:visited {
   align-items: center;
 
 }
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* Start slightly smaller */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* End at normal size */
+  }
+}
 
+.button-container {
+  animation: fadeInScale 1s ease-out forwards; /* Apply the animation */
+}
 .calorie-button,
 .bmi-button,
 .recom-button {
@@ -745,4 +775,42 @@ button#calculate:hover {
 
 #rec-container {
   transition: width 0.25s ease, height 0.25s ease;
+}
+
+.about-container{
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  top: 110px;
+  bottom: 10px;
+  left: 50px;
+  right: 50px;
+  border: #000000;
+  border-style: solid;
+  border-radius: 25px ;
+  padding: 20px;
+  box-shadow: rgb(0, 0, 0) 0px 10px 25px, rgba(0, 0, 0, 0.5) 0px 0px 15px;
+  background-color:#d8e6d2 ;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.about-container{
+  animation: fadeIn 1s ease-in-out;
+}
+.about-container .content,
+.about-container .image {
+    flex: 1;
+    padding: 20px;
+    min-width: 300px; /* Adjust the min-width to prevent items from becoming too small */
+}
+
+.Thankyou{
+  position: relative;
+  display: flex;
+  font-family: Monotype Corsiva;
+  font-weight: 900;
+  font-size: 35px;
+  align-items: center;
+  justify-content: center;
 }
