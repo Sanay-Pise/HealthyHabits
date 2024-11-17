@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -232,7 +232,7 @@ nav a:visited {
   position: relative;
   top: 220px;
   right: 220px;
-  padding: 40px;
+  padding: 50px;
   background: transparent;
   backdrop-filter: blur(20px);
   box-shadow: rgb(0, 0, 0) 20px 20px 50px;
@@ -240,7 +240,7 @@ nav a:visited {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  font-size: 15px;
 }
 @keyframes fadeInScale {
   0% {
@@ -256,6 +256,13 @@ nav a:visited {
 .button-container {
   animation: fadeInScale 1s ease-out forwards; /* Apply the animation */
 }
+
+.button-container .image{
+  position: relative;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+}
 .calorie-button,
 .bmi-button,
 .recom-button {
@@ -263,6 +270,8 @@ nav a:visited {
   justify-content: center;
   padding: 20px;
   border: none;
+  
+  
 }
 
 .btn-login {
@@ -310,7 +319,7 @@ nav a:visited {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: larger;
   font-style: normal;
-  background-color: #162938;
+  background-color: #2A353B;
   border-color: #62dd31;
   color: #f0f0f0;
   padding: 1em 2em;
@@ -322,6 +331,7 @@ nav a:visited {
   border-style: solid;
 
 }
+
 
 .calculator-button:hover {
   z-index: 0;
@@ -808,8 +818,9 @@ button#calculate:hover {
 .Thankyou{
   position: relative;
   display: flex;
-  font-family: Monotype Corsiva;
+  font-family: "Charm", cursive;
   font-weight: 900;
+  font-style: normal;
   font-size: 35px;
   align-items: center;
   justify-content: center;
