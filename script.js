@@ -157,14 +157,18 @@ function recCalories() {
   const height = parseInt(document.getElementById("height") ? document.getElementById("height").value : null);
   const weight = parseInt(document.getElementById("weight") ? document.getElementById("weight").value : null);
   const goal = document.getElementById("goal") ? document.getElementById("goal").value : null;
-
-  if (!gender || !age || !height || !weight || !goal) {
+  const work = document.getElementById("work") ? document.getElementById("work").value : null;                   
+  if (!gender || !age || !height || !weight || !goal || !work) {
     const resultElement = document.getElementById("result");
     if (resultElement) {
       resultElement.innerHTML = `<p class="text-center mt-3">Please enter all required information!</p>`;
     }
     return;
   }
+
+  const container = document.getElementById('rec-container');
+  container.style.width = '550px'; // Change as needed
+  container.style.height = '730px';
 
   // Calculate BMR
   let bmr;
@@ -174,9 +178,24 @@ function recCalories() {
     bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
   }
 
-  // Adjust BMR based on an assumed moderate activity level (e.g., BMR * 1.55)
-  const activityFactor = 1.55; // Moderate activity level
-  const dailyCalories = bmr * activityFactor;
+  
+  
+  let dailyCalories;
+  if (work === "sedentary"){
+     dailyCalories = bmr * 1.2;
+  }
+  else if (work === "light"){
+     dailyCalories = bmr * 1.375;
+  }
+  else if (work === "moderate"){
+     dailyCalories = bmr * 1.465;
+  }
+  else if (work === "active"){
+     dailyCalories = bmr * 1.55;
+  }else if(work === "very_active"){
+     dailyCalories = bmr * 1.725;
+  }
+  // const dailyCalories = bmr * activityFactor;
 
   // Adjust for weight goal (e.g., -500 calories/day for weight loss, +500 for weight gain)
   let adjustedCalories;

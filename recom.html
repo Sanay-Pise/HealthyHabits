@@ -25,14 +25,14 @@
           <img src="home.svg" alt="Home page">
         </a>
         <a href="calorie.html" target="_blank">
-          <img src="cal.svg" alt="bmi calculator">
+          <img src="cal.svg" alt="daily calorie calculator">
         </a>
         <a href="bmi.html" target="_blank">
-          <img src="bmi.png" alt="recommendation page">
+          <img src="bmi.png" alt="bmi page">
         </a>
       </nav>
     </div>
-    <div class="rec-container">
+    <div  id="rec-container" class="rec-container">
       <h2 class="text-center">Personalized Calorie Tracker</h2>
 
       <form style="width: 400px;">
@@ -66,6 +66,17 @@
               <option value="" disabled selected>-select-</option>
                   <option value="gain">Gain</option>
                   <option value="lose">Lose</option>
+            </select>          
+          </div>
+          <div class="form-group">
+            <label for="work">Activity Level:</label>
+            <select id="work" class="form-control" required>
+              <option value="" disabled selected>-select-</option>
+                  <option value="sedentary">Sedentary(little or no exercise)</option>
+                  <option value="light">Lightly Active(exercise 1-3x/week)</option>
+                  <option value="moderate">Moderate(exercise 4-5x/week)</option>
+                  <option value="active">Active(Daily or 3-4x intense/week)</option>
+                  <option value="very_active">Very Active(Intense 6-7x/week)</option>
             </select>          
           </div>
           <div class="calculate-button">

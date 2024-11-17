@@ -46,7 +46,12 @@ body {
   font-weight: 400;
   text-decoration: none;
   color: #000000;
+  transition: all 0.3s ease;
+}
 
+.logo a:hover {
+  color: #000000;
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
 }
 
 .healthy-habits {
@@ -102,9 +107,11 @@ nav a:visited {
   color: #000000;
 }
 
-nav a:hover {
+.nav a:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
+  color: #000000;
+  text-shadow: 0 0 100px white, 0 0 20px white, 0 0 30px white;
 }
 
 .navigation a::after {
@@ -734,4 +741,8 @@ button#calculate:hover {
 }
 .rec-container {
   animation: slideIn 2s ease-in-out;
+}
+
+#rec-container {
+  transition: width 0.25s ease, height 0.25s ease;
 }
