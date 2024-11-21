@@ -257,12 +257,20 @@ nav a:visited {
   animation: fadeInScale 1s ease-out forwards; /* Apply the animation */
 }
 
-.button-container .image{
+.button-container img{
   position: relative;
   display: flex;
   align-items: right;
   justify-content: right;
+  transition: filter 0.3s ease;
+  filter: invert(100%);
+  scale: .8;
 }
+
+.button-container:hover img {
+  filter: invert(0%);
+}
+
 .calorie-button,
 .bmi-button,
 .recom-button {
