@@ -22,7 +22,7 @@ function calculateCalories() {
 
   const resultElement = document.getElementById("result");
   if (resultElement) {
-      resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong><span style="color: #FF9800; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0), 0 0 5px #000000, 0 0 2px black;">${bmr.toFixed(2)}</span></strong> calories</p>`;
+      resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs to maintian weight: <strong><span style="color: #FF9800; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0), 0 0 5px #000000, 0 0 2px black;">${bmr.toFixed(2)}</span></strong> calories</p>`;
   }
 }
 // Wait for the DOM to be fully loaded

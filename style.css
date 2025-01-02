@@ -126,8 +126,8 @@ nav a .description {
  
   position: absolute;
   top: 100%; /* Position it below the icon */
-  left: 50%;
-  transform: translateX(-50%);
+  right: 70px; /* Align it to the right */
+  transform: translateX(50%);
   visibility: hidden;
   font-size: 15px;
   opacity: 0;
@@ -225,7 +225,7 @@ nav a:hover .description {
   font-weight: 700;
   font-style: normal;
   position: relative;
-  top: 150px;
+  /* top: 150px; */
   left: 30px;
   display: flex;
   color: #4d634e;
@@ -667,7 +667,7 @@ nav a:hover .description {
   border-radius: 38px;
   text-align: center;
   position: relative;
-  margin-bottom: 150px;
+  /* margin-bottom: 150px; */
 }
 .box::before {
   content: "";
@@ -805,7 +805,7 @@ button#calculate:hover {
   font-weight: 700;
   font-style: normal;
   position: relative;
-  top: 150px;
+  /* top: 150px; */
   left: 30px;
   display: flex;
   color: #4d634e;
@@ -816,7 +816,7 @@ button#calculate:hover {
   border-radius: 20px;
   background: #d8e6d2;
   width: 500px;
-  height: 695px;
+  height: 745px;
   box-shadow: rgb(0, 0, 0) 0px 10px 25px, rgba(0, 0, 0, 0.5) 0px 0px 15px;
 }
 
