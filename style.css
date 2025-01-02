@@ -29,12 +29,29 @@ body {
 }
 
 .main {
+  display: flex;
+  justify-content: center; /* Center the button container horizontally */
+  align-items: center; /* Center the button container vertically */
   height: 100vh;
   background-image: url('bg2.jpg');
-  background-size: 100% 150%; /* Stretch the background horizontally */
-  background-repeat: repeat;
+  background-size: cover; /* Cover the entire screen with the background */
+  background-repeat: no-repeat;
+  background-position: center center; /* Ensure background is centered */
   animation: moveBg 30s linear infinite;
-  background-attachment: fixed; /* Keep the background fixed */
+  background-attachment: fixed; /* Keep background fixed */
+  position: relative; /* Ensure relative positioning */
+}
+
+/* Header containing the navigation bar */
+.header {
+  position: absolute; /* Keeps header fixed at top of page */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* Keeps the nav on top of the main content */
+  padding: 0px 10px;
+  padding-bottom: 50px;
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: background for navigation */
 }
 
 .header {
@@ -94,9 +111,11 @@ body {
 }
 
 nav {
-  float: right;
-  line-height: 100px;
-
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 100;
 }
 
 nav a {
@@ -107,8 +126,32 @@ nav a {
   padding: 30px 20px;
   transform: scale(1.1);
   transition: transform 0.3s ease;
+  position: relative; /* Ensure the description is positioned relative to this link */
+  margin-left: 10px; /* Adds space between icons */
 }
 
+nav a img {
+  display: block;
+  margin: 0 auto;
+}
+
+nav a .description {
+ 
+  position: absolute;
+  top: 100%; /* Position it below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+  font-size: 15px;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 10; /* Ensures it appears above other elements */
+}
 nav a:link {
   text-decoration: solid;
   font-family: 'londrina solid';
@@ -124,11 +167,16 @@ nav a:visited {
   color: #000000;
 }
 
-.nav a:hover {
+nav a:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
   color: #000000;
   text-shadow: 0 0 100px white, 0 0 20px white, 0 0 30px white;
+}
+
+nav a:hover .description {
+  visibility: visible;
+  opacity: 1;
 }
 
 .navigation a::after {
@@ -229,19 +277,18 @@ nav a:visited {
   width: 500px;
   height: 450px;
   align-items: center;
-  position: relative;
-  top: 220px;
-  right: 220px;
   padding: 50px;
+  
   background: transparent;
   backdrop-filter: blur(20px);
   box-shadow: rgb(0, 0, 0) 20px 20px 50px;
   border-radius: 20px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   font-size: 15px;
+  margin: 0 auto; /* Center the container horizontally */
 }
+
 @keyframes fadeInScale {
   0% {
     opacity: 0;
@@ -833,3 +880,59 @@ button#calculate:hover {
   align-items: center;
   justify-content: center;
 }
+
+.contact-container {
+  background-color: #d8e6d2;
+  width: auto;
+  height: 700px;
+  margin-top: 150px;
+  border: #000000;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: rgb(0, 0, 0) 0px 10px 25px, rgba(0, 0, 0, 0.5) 0px 0px 15px;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  /* Flexbox to center content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.contact-container{
+  animation: fadeIn 1s ease-in-out;
+}
+.contact-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.contact_form-group {
+  width: 100%;
+  max-width: 400px;  /* Ensure the form field doesn't stretch too wide */
+  margin: 10px 0;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 400px;  /* Set a max width for the form */
+  margin: 0 auto;    /* Center the form horizontally */
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;       /* Make input fields take the full width */
+  padding: 10px;     /* Add some padding inside input fields */
+  margin-top: 5px;
+}
+
+button[type="submit"] {
+  width: 100%;       /* Ensure the submit button takes the full width */
+  padding: 10px;     /* Add padding to the button for better appearance */
+  margin-top: 15px;
+}
+

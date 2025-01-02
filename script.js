@@ -232,3 +232,23 @@ window.addEventListener('mousemove', (e) => {
     const moveY = (mouseY / window.innerHeight) * 100;
     parallax.style.transform = `translate(-${moveX / 10}%, -${moveY / 10}%)`;
 });
+
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Show the success message
+  alert('Your response has been sent successfully!');
+
+  // Optionally, you can simulate sending the form data to a server or save it locally.
+  // For demonstration, we'll just log the data.
+  const formData = new FormData(this);
+  for (let [key, value] of formData.entries()) {
+    console.log(key + ": " + value);
+  }
+
+  // Redirect to the homepage after 2 seconds
+  setTimeout(function() {
+    window.location.href = 'index.html'; // Redirect to the homepage
+  }, 2000); // Adjust the time as needed (2000 ms = 2 seconds)
+});
