@@ -881,7 +881,7 @@ button#calculate:hover {
   background-color: #d8e6d2;
   width: auto;
   height: 700px;
-  margin-top: 150px;
+  /* margin-top: 150px; */
   border: #000000;
   border-style: solid;
   border-radius: 25px;
