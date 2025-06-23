@@ -104,6 +104,7 @@ nav {
   gap: 25px;
   flex-wrap: wrap;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 
@@ -191,6 +192,7 @@ nav a:hover .description {
 .main {
   margin-top: 100px;
   display: flex;
+  flex-direction: column;
   justify-content: center; /* Center button container horizontally */
   align-items: center; /* Center button container vertically */
   height: 100vh;
@@ -201,7 +203,7 @@ nav a:hover .description {
   animation: moveBg 30s linear infinite;
   background-attachment: fixed; /* Keep the background fixed */
   position: relative; /* Makes sure that the content inside is positioned relative to this */
-  padding-top: 100px; / /* Ensure relative positioning */
+  padding-top: 20px; / /* Ensure relative positioning */
 }
 
 
@@ -952,6 +954,8 @@ button[type="submit"] {
   }
 
   .header {
+    position: relative; /* <-- Important */
+  z-index: 1;
     height: auto;
     padding: 10px;
     display: flex;
