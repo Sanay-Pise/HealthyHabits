@@ -933,6 +933,7 @@ button[type="submit"] {
 }
 
 /* For phones and small devices */
+/* Responsive design for mobile screens */
 @media (max-width: 768px) {
   .calculator-container,
   .rec-container,
@@ -946,9 +947,23 @@ button[type="submit"] {
     padding: 20px !important;
   }
 
+  .logo {
+    width: 100%;
+    float: none;
+    text-align: center;
+    line-height: normal;
+  }
+
   .logo a {
     font-size: 30px;
     left: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
   }
 
   nav a {
@@ -1001,4 +1016,10 @@ button[type="submit"] {
     font-size: 18px;
     width: 90%;
   }
+
+  /* Optional: Hide descriptions below nav icons on small screens */
+  nav a .description {
+    display: none;
+  }
 }
+
