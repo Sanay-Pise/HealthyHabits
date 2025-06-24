@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./style.css">
 
   <!--FONTS-->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -22,20 +23,21 @@
 </head>
 
 <body>
-
+<div class="main" style="display: none;">
   <div class="main">
     <div class="header">
       <div class="logo">
-        <a href="index.html" class="welcome">Welcome to </a>
-        <a href="index.html" class="healthy-habits"> Healthy Habits </a>
+        <a href="home.html" class="welcome">Welcome to </a>
+        <a href="home.html" class="healthy-habits"> Healthy Habits </a>
       </div>
 
       <nav>
-        <a href="login.html" class="nav-item">
-          <img src="login.svg" alt="login">
-          <span class="description">Login / SignUp</span>
+        <a href="home.html" class="nav-item">
+          <img src="home.svg" alt="Contact">
+          <span class="description">Home Page</span>
         </a>
-        <a href="about_NL.html" class="nav-item">
+
+        <a href="about_L.html" class="nav-item">
           <img src="info.png" alt="about">
           <span class="description">About Us</span>
         </a>
@@ -43,35 +45,54 @@
           <img src="contact.svg" alt="Contact">
           <span class="description">Contact Us</span>
         </a>
-      </nav>
-
+        
+    </nav>
+    
 
       <div class="button-container">
         <h2 class="text-center" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', charcoal">SELECT YOUR
           CHOICE</h2>
         <div class="calorie-button">
-          <button class="calculator-button" onclick="showSpinnerAndRedirect('login.html')">Calorie Calculator ‎<img src="cal.svg"></button>
+          <button class="calculator-button" onclick="location.href='calorie.html'">Calorie Calculator<img src="cal.svg"></button>
         </div>
         <div class="bmi-button">
-          <button class="calculator-button" onclick="showSpinnerAndRedirect('login.html')">BMI Calculator ‎ <img src="bmi.png"></button>
+          <button class="calculator-button" onclick="location.href='bmi.html'">BMI Calculator<img src="bmi.png"></button>
         </div>
         <div class="recom-button">
-          <button class="calculator-button" onclick="showSpinnerAndRedirect('login.html')">Weight Goal Calculator ‎ <img src="slim.png"></button>
+          <button class="calculator-button" onclick="location.href='recom.html'">Weight Goal Calculator<img src="slim.png"></button>
         </div>
       </div>
 
-      <!-- Spinner Container -->
-      <div id="spinner-container" class="spinner-container" style="display: none;">
-        <div class="spinner"></div>
-      </div>
 
     </div>
-  </div>
+</div>
+    
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
-  <script src="script.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBy0S0Pio0PzKuGSjvdcnXoX_8uRCUB1DY",
+    authDomain: "healthy-habits-84c1c.firebaseapp.com",
+    projectId: "healthy-habits-84c1c",
+    storageBucket: "healthy-habits-84c1c.appspot.com",
+    messagingSenderId: "816418624676",
+    appId: "1:816418624676:web:51fb5148a4775045c70231"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      document.querySelector(".main").style.display = "block";
+    } else {
+      window.location.href = "login.html";
+    }
+  });
+</script>
+
+<script src="script.js"></script>
 </body>
 
 </html>

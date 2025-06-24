@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthy Habits</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nerko+One&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="main">
+    <div class="header">
+      <div class="logo">
+        <a href="index.html" class="welcome">Welcome to </a>
+        <a href="index.html" class="healthy-habits">Healthy Habits</a>
+      </div>
+
+      <nav>
+        <a href="login.html" class="nav-item">
+          <img src="login.svg" alt="login" />
+          <span class="description">Login / SignUp</span>
+        </a>
+        <a href="about_NL.html" class="nav-item">
+          <img src="info.png" alt="about" />
+          <span class="description">About Us</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+          <img src="contact.svg" alt="Contact" />
+          <span class="description">Contact Us</span>
+        </a>
+      </nav>
+
+      <div class="button-container">
+        <h2 class="text-center" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', charcoal">
+          SELECT YOUR CHOICE
+        </h2>
+      
+        <div class="calorie-button">
+          <button class="calculator-button" onclick="window.location.href='calorie.html'">
+            Calorie Calculator <img src="cal.svg" alt="kcal icon" />
+          </button>
+        </div>
+      
+        <div class="bmi-button">
+          <button class="calculator-button" onclick="window.location.href='bmi.html'">
+            BMI Calculator <img src="bmi.png" alt="bmi icon" />
+          </button>
+        </div>
+      
+        <div class="recom-button">
+          <button class="calculator-button" onclick="window.location.href='recom.html'">
+            Weight Goal Calculator <img src="slim.png" alt="goal icon" />
+          </button>
+        </div>
+      </div>
+      
+      
+
+      <!-- Spinner Container -->
+      <div id="spinner-container" class="spinner-container" style="display: none;">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ✅ Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBy0S0Pio0PzKuGSjvdcnXoX_8uRCUB1DY",
+      authDomain: "healthy-habits-84c1c.firebaseapp.com",
+      projectId: "healthy-habits-84c1c",
+      storageBucket: "healthy-habits-84c1c.appspot.com",
+      messagingSenderId: "816418624676",
+      appId: "1:816418624676:web:51fb5148a4775045c70231",
+      measurementId: "G-G7NLXQK52B"
+    };
+
+    // ✅ Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // ✅ Show spinner & check login before redirecting
+    function showSpinnerAndRedirect(targetPage) {
+      const spinner = document.getElementById("spinner-container");
+      if (spinner) spinner.style.display = "flex";
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          setTimeout(() => {
+            window.location.href = targetPage;
+          }, 1500);
+        } else {
+          setTimeout(() => {
+            alert("Please log in to continue.");
+            window.location.href = "login.html";
+          }, 1000);
+        }
+      });
+    }
+
+    // ✅ Save data (optional, if used later)
+    function saveCaloriesToFirestore(data) {
+      const user = auth.currentUser;
+      if (!user) {
+        alert("Please log in to save your data.");
+        return;
+      }
+
+      db.collection("calorie_results").add({
+        uid: user.uid,
+        ...data,
+        timestamp: new Date()
+      }).then(() => {
+        alert("Data saved successfully!");
+      }).catch(err => {
+        console.error("Error saving:", err);
+        alert("Failed to save data.");
+      });
+    }
+
+    // Make functions available globally
+    window.showSpinnerAndRedirect = showSpinnerAndRedirect;
+    window.saveCaloriesToFirestore = saveCaloriesToFirestore;
+  </script>
+
+  <!-- Optional script.js -->
+  <script src="script.js"></script>
+
+  <!-- Spinner CSS (optional if not in style.css) -->
+  <style>
+    .spinner-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .spinner {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #ff9800;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</body>
+
+</html>

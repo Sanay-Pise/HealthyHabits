@@ -11,6 +11,11 @@
 
   <!-- Style CSS -->
   <link rel="stylesheet" href="./style.css">
+
+
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore-compat.js"></script>
 </head>
 
 <body>
@@ -91,7 +96,26 @@
 
       <div id="result"></div>
   </div>
-<script src = script.js></script>
+ <!-- Firebase SDKs -->
+ <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBy0S0Pio0PzKuGSjvdcnXoX_8uRCUB1DY",
+      authDomain: "healthy-habits-84c1c.firebaseapp.com",
+      projectId: "healthy-habits-84c1c",
+      storageBucket: "healthy-habits-84c1c.appspot.com",
+      messagingSenderId: "816418624676",
+      appId: "1:816418624676:web:51fb5148a4775045c70231",
+      measurementId: "G-G7NLXQK52B"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+  </script>
+
+  <!-- Your script.js -->
+  <script src="script.js"></script>
+
 </body>
 
 </html>
