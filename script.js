@@ -15,7 +15,8 @@ function calculateCalories() {
     ? 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
     : 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
 
-  resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong>${bmr.toFixed(2)}</strong> calories</p>`;
+  resultElement.innerHTML = `<p class="text-center mt-3">Your estimated daily calorie needs: <strong><span style="color:#FF9800;">${bmr.toFixed(2)}</span></strong> calories</p>`;
+
 
   const user = firebase.auth().currentUser;
   if (user) {

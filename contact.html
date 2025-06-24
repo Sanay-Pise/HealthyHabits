@@ -19,6 +19,9 @@
     href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nerko+One&display=swap"
     rel="stylesheet">
 
+  <!-- SweetAlert2 for beautiful alerts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 </head>
 
 <body>
@@ -43,8 +46,7 @@
             <img src="info.png" alt="About page">
             <span class="description">About</span>
         </a>
-    </nav>
-    
+      </nav>
     </div>
 
     <div class="contact-container">
@@ -68,20 +70,118 @@
                   <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                 </div>
               
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-              </form>
-              
+                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                  <span id="submitText">Submit</span>
+                  <span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                </button>
+            </form>
         </div>
-      </div>
-      
-
-    <!-- Spinner Container -->
-    <div id="spinner-container" class="spinner-container" style="display: none;">
-      <div class="spinner"></div>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore-compat.js"></script>
+  
+  <!-- SweetAlert2 for beautiful alerts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBy0S0Pio0PzKuGSjvdcnXoX_8uRCUB1DY",
+      authDomain: "healthy-habits-84c1c.firebaseapp.com",
+      projectId: "healthy-habits-84c1c",
+      storageBucket: "healthy-habits-84c1c.appspot.com",
+      messagingSenderId: "816418624676",
+      appId: "1:816418624676:web:51fb5148a4775045c70231",
+      measurementId: "G-G7NLXQK52B"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Contact form submission handler
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form elements
+      const submitBtn = document.getElementById('submitBtn');
+      const submitText = document.getElementById('submitText');
+      const spinner = document.getElementById('spinner');
+      const form = e.target;
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitText.textContent = 'Sending...';
+      spinner.style.display = 'inline-block';
+      
+      try {
+        // Get form values
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        
+        // Basic validation
+        if (!name || !email || !message) {
+          throw new Error('Please fill in all fields');
+        }
+        
+        // Email validation
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          throw new Error('Please enter a valid email address');
+        }
+
+        // Log that we're receiving the form data
+        console.log('Form received with data:', {
+          name: name,
+          email: email,
+          message: message.substring(0, 50) + (message.length > 50 ? '...' : '') // Show first 50 chars of message
+        });
+        
+        // Save to Firestore
+        const docRef = await db.collection('contactSubmissions').add({
+          name: name,
+          email: email,
+          message: message,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          status: 'unread'
+        });
+
+        // Log successful submission to console
+        console.log('Form successfully submitted with ID:', docRef.id);
+        console.log('Full message content:', message);
+        
+        // Show success message
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your message has been sent successfully.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        
+        // Reset form
+        form.reset();
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        Swal.fire({
+          title: 'Error!',
+          text: error.message || 'Failed to send message. Please try again.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitText.textContent = 'Submit';
+        spinner.style.display = 'none';
+      }
+    });
+  </script>
+
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
