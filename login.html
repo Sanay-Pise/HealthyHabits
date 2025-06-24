@@ -111,6 +111,74 @@
     <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+      
+        // ✅ Firebase Config
+        const firebaseConfig = {
+          apiKey: "AIzaSyBy0S0Pio0PzKuGSjvdcnXoX_8uRCUB1DY",
+          authDomain: "healthy-habits-84c1c.firebaseapp.com",
+          projectId: "healthy-habits-84c1c",
+          storageBucket: "healthy-habits-84c1c.appspot.com",
+          messagingSenderId: "816418624676",
+          appId: "1:816418624676:web:51fb5148a4775045c70231"
+        };
+      
+        // ✅ Init Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+      
+        // ✅ Toggle Forms
+        const wrapper = document.querySelector('.wrapper');
+        const registerLink = document.querySelector('.register-link');
+        const loginLink = document.querySelector('.login-link');
+      
+        if (registerLink) {
+          registerLink.addEventListener('click', () => {
+            wrapper.classList.add('active');
+          });
+        }
+      
+        if (loginLink) {
+          loginLink.addEventListener('click', () => {
+            wrapper.classList.remove('active');
+          });
+        }
+      
+        // ✅ Login Form Submit
+        const loginForm = document.querySelector('.form-box.login form');
+        loginForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = loginForm.querySelector('input[type="email"]').value;
+          const password = loginForm.querySelector('input[type="password"]').value;
+      
+          try {
+            await signInWithEmailAndPassword(auth, email, password);
+            alert("Login successful!");
+            window.location.href = "home.html"; // Redirect after login
+          } catch (err) {
+            alert("Login failed: " + err.message);
+          }
+        });
+      
+        // ✅ Register Form Submit
+        const registerForm = document.querySelector('.form-box.register form');
+        registerForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = registerForm.querySelector('input[type="email"]').value;
+          const password = registerForm.querySelector('input[type="password"]').value;
+      
+          try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            alert("Signup successful!");
+            wrapper.classList.remove('active'); // Switch to login
+          } catch (err) {
+            alert("Signup failed: " + err.message);
+          }
+        });
+      </script>
+      
 </body>
 
 </html>

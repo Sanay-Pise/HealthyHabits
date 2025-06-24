@@ -252,3 +252,73 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     window.location.href = 'index.html'; // Redirect to the homepage
   }, 2000); // Adjust the time as needed (2000 ms = 2 seconds)
 });
+
+
+// DATABASE 
+
+
+  // Import the functions you need from the SDKs you need
+  <!-- Firebase Core -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBy0S0Pio0PzKuGSjvdcnXoX_8uRCUB1DY",
+    authDomain: "healthy-habits-84c1c.firebaseapp.com",
+    projectId: "healthy-habits-84c1c",
+    storageBucket: "healthy-habits-84c1c.appspot.com",
+    messagingSenderId: "816418624676",
+    appId: "1:816418624676:web:51fb5148a4775045c70231",
+    measurementId: "G-G7NLXQK52B"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // 🔐 Register user
+  window.registerUser = async function (email, password) {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Signup successful!");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  // 🔐 Login user
+  window.loginUser = async function (email, password) {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Login successful!");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  // ✅ Save calorie result to Firestore
+  window.saveCalories = async function (data) {
+    try {
+      const user = auth.currentUser;
+      if (!user) return alert("Please log in to save data.");
+      await addDoc(collection(db, "calorie_results"), {
+        uid: user.uid,
+        ...data,
+        date: new Date()
+      });
+      alert("Data saved!");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Automatically run something after login
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log("User logged in:", user.email);
+    }
+  });
+</script>
+
